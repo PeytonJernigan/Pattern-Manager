@@ -238,3 +238,31 @@ where schemaname = 'storage'
   and tablename = 'objects'
   and cmd in ('UPDATE', 'DELETE')
   and 'authenticated' = any (roles);
+
+-- 17. PASS when no row is returned: authenticated has every project-table
+-- privilege used by the browser client.
+with expected(privilege_type) as (
+  values ('SELECT'), ('INSERT'), ('UPDATE'), ('DELETE')
+)
+select e.privilege_type as missing_privilege
+from expected as e
+where not exists (
+  select 1
+  from information_schema.role_table_grants as g
+  where g.grantee = 'authenticated'
+    and g.table_schema = 'public'
+    and g.table_name = 'projects'
+    and g.privilege_type = e.privilege_type
+);
+
+-- 18. PASS when the single row reports row_local=true. A SELECT policy that
+-- re-queries projects through can_access_project() breaks INSERT ... RETURNING
+-- because a STABLE function cannot see a row inserted by the same statement.
+select
+  policyname,
+  cmd,
+  qual not ilike '%can_access_project%' as row_local
+from pg_policies
+where schemaname = 'public'
+  and tablename = 'projects'
+  and policyname = 'projects_select_visible';

@@ -318,11 +318,14 @@ export function DataProvider({ children }: PropsWithChildren) {
       persistDemo({ ...demoState, projects: [project, ...demoState.projects] }); return project
     }
     const { data, error: insertError } = await supabase.from('projects').insert({
-      household_id: user.householdId, created_by: user.id, owner_user_id: user.id, pattern_id: input.patternId ?? null,
+      pattern_id: input.patternId ?? null,
       title: input.title, project_kind: input.craft, status: input.status ?? 'planned',
       visibility: input.visibility ?? preferences.defaultProjectVisibility, notes: input.notes ?? null,
     }).select('*, patterns(id,title,thumbnail_storage_path,primary_asset_id)').single()
-    if (insertError) throw insertError
+    if (insertError) {
+      const detail = [insertError.message, insertError.details, insertError.hint].filter(Boolean).join(' ')
+      throw new Error(detail || 'The project could not be created.')
+    }
     const project = mapProject(data); setProjects((value) => [project, ...value]); return project
   }, [demoMode, demoState, patterns, persistDemo, preferences.defaultProjectVisibility, user])
 
