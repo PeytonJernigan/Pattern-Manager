@@ -1,0 +1,41 @@
+/* Project checklist and journal controls added to the shared visual system. */
+.inline-add { display: flex; gap: 7px; }
+.inline-add input,
+.project-journal textarea { min-width: 0; width: 100%; padding: 10px 11px; color: var(--ink); background: var(--surface-strong); border: 1px solid var(--line); border-radius: 9px; font: inherit; }
+.inline-add button { display: grid; flex: 0 0 39px; place-items: center; color: #fff; background: var(--teal); border: 0; border-radius: 9px; cursor: pointer; }
+.inline-add svg { width: 15px; }
+.project-checklist ul,
+.project-journal ol { display: grid; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.project-checklist li { display: grid; grid-template-columns: 28px 1fr 28px; align-items: center; gap: 8px; padding: 7px; background: var(--paper); border-radius: 8px; }
+.project-checklist li.is-complete span { color: var(--ink-faint); text-decoration: line-through; }
+.task-toggle,
+.task-delete { display: grid; place-items: center; width: 28px; height: 28px; color: var(--ink-soft); background: transparent; border: 1px solid var(--line); border-radius: 7px; cursor: pointer; }
+.task-toggle svg,
+.task-delete svg { width: 13px; }
+.is-complete .task-toggle { color: #fff; background: var(--teal); }
+.task-delete { border: 0; opacity: .65; }
+.project-journal form { display: grid; justify-items: end; gap: 8px; }
+.project-journal textarea { resize: vertical; }
+.project-journal li { padding: 11px; background: var(--paper); border-left: 3px solid var(--gold); border-radius: 6px; }
+.project-journal li p { margin: 0 0 5px; white-space: pre-wrap; }
+.project-journal time { color: var(--ink-faint); font-size: 10px; }
+
+.catalog-fact-list { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.catalog-fact-list li { display: grid; gap: 2px; padding: 8px 10px; background: var(--paper); border-radius: 8px; }
+.catalog-fact-list strong { font-size: 11px; }.catalog-fact-list span { color: var(--ink-soft); font-size: 10px; }
+.catalog-details { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line-soft); }
+.catalog-details summary { color: var(--teal-deep); font-size: 11px; font-weight: 750; cursor: pointer; }
+.catalog-details ul { display: grid; gap: 6px; max-height: 320px; overflow: auto; margin: 10px 0 0; padding: 0; list-style: none; }
+.catalog-details li { display: grid; grid-template-columns: minmax(100px,.6fr) 1fr; gap: 8px; padding-bottom: 5px; border-bottom: 1px solid var(--line-soft); font-size: 10px; }
+.catalog-table-wrap { overflow: auto; max-height: 430px; border: 1px solid var(--line); border-radius: 9px; }
+.catalog-table { width: 100%; border-collapse: collapse; font-size: 10px; }
+.catalog-table th { position: sticky; top: 0; padding: 8px; color: var(--ink-soft); background: var(--paper-deep); text-align: left; }
+.catalog-table td { padding: 8px; border-top: 1px solid var(--line-soft); vertical-align: top; }
+.credit-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 10px; }
+.credit-grid > div { display: grid; gap: 3px; padding: 11px; background: var(--paper); border-radius: 9px; }
+.credit-grid span { color: var(--ink-soft); font-size: 10px; }.credit-grid > div > div { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+.credit-grid a { display: inline-flex; align-items: center; gap: 3px; color: var(--teal-deep); font-size: 10px; font-weight: 700; }
+.credit-grid a svg { width: 11px; }
+.detail-cover { position: relative; }
+.cover-upload { position: absolute; right: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 5px; padding: 7px 9px; color: var(--fixed-light); background: color-mix(in srgb, var(--fixed-dark) 88%, transparent); border: 0; border-radius: 8px; font-size: 10px; font-weight: 750; box-shadow: 0 4px 14px rgba(0,0,0,.22); }
+.cover-upload svg { width: 14px; }

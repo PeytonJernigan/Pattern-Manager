@@ -1,0 +1,49 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+coverage
+*.local
+
+# Never commit credentials or private library data
+.env
+.env.*
+!.env.example
+private-data/
+catalog-import-report*.json
+catalog-import-checkpoint*.json
+supabase/.temp/
+src/assets/hero.png
+
+# Local icon-rendering intermediates
+public/icon-192.png
+public/icon-512.png
+public/icon-maskable-512.png
+public/apple-touch-icon*.png
+public/app-icon-192.png
+public/app-apple-touch-icon.png
+scripts/render-icon.html
+scripts/render-maskable-icon.html
+
+# Local database and Netlify state
+.netlify/
+.supabase/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
